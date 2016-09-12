@@ -17,6 +17,7 @@
 		88563A8D1D864F6C00B4EA30 /* UILabelDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A8C1D864F6C00B4EA30 /* UILabelDemoUITests.m */; };
 		88563A9E1D86502100B4EA30 /* UILabel+MultipleLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */; };
 		88563AA21D86533200B4EA30 /* QSShowTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563AA11D86533200B4EA30 /* QSShowTextCell.m */; };
+		88563AAA1D86915200B4EA30 /* UIColor+BgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563AA91D86915200B4EA30 /* UIColor+BgColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		88563AA01D86533200B4EA30 /* QSShowTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSShowTextCell.h; sourceTree = "<group>"; };
 		88563AA11D86533200B4EA30 /* QSShowTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSShowTextCell.m; sourceTree = "<group>"; };
 		88563AA71D86546B00B4EA30 /* QSShowTextCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSShowTextCellConfig.h; sourceTree = "<group>"; };
+		88563AA81D86915200B4EA30 /* UIColor+BgColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BgColor.h"; sourceTree = "<group>"; };
+		88563AA91D86915200B4EA30 /* UIColor+BgColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BgColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 			children = (
 				88563A9C1D86502100B4EA30 /* UILabel+MultipleLines.h */,
 				88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */,
+				88563AA81D86915200B4EA30 /* UIColor+BgColor.h */,
+				88563AA91D86915200B4EA30 /* UIColor+BgColor.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88563AAA1D86915200B4EA30 /* UIColor+BgColor.m in Sources */,
 				88563A6F1D864F6C00B4EA30 /* ViewController.m in Sources */,
 				88563A6C1D864F6C00B4EA30 /* AppDelegate.m in Sources */,
 				88563A9E1D86502100B4EA30 /* UILabel+MultipleLines.m in Sources */,

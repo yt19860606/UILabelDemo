@@ -14,7 +14,7 @@
  *  设置文本多行可控间距显示
  *
  *  @param text        文本
- *  @param lines       行数，lines = 0不限制行高
+ *  @param lines       行数，lines = 0不限制行数
  *  @param lineSpacing 行间距
  *  @param cSize       文本显示的最大区域
  *
@@ -29,7 +29,7 @@
  *  计算文本占用的size
  *
  *  @param text        文本
- *  @param lines       行数，lines = 0不限制行高
+ *  @param lines       行数，lines = 0不限制行数
  *  @param font        字体类型
  *  @param lineSpacing 行间距
  *  @param cSize       文本显示的最大区域

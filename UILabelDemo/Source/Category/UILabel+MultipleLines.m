@@ -39,15 +39,22 @@
     
     CGFloat oneRowHeight = [text sizeWithAttributes:@{NSFontAttributeName:font}].height;
     CGSize textSize = [text boundingRectWithSize:cSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
-    //计算出真实大小
-    CGFloat rows = textSize.height / oneRowHeight;
-    CGFloat realHeight;
-    if (rows >= lines) {
-        rows = lines;
-    }
     
-    realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
-    return CGSizeMake(textSize.width, realHeight+2);
+    CGFloat rows = textSize.height / oneRowHeight;
+    CGFloat realHeight = oneRowHeight;
+    // 0 不限制行数
+    if (lines == 0) {
+        CGFloat rows = textSize.height / oneRowHeight;
+        if (rows > 1) {
+            realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
+        }
+    }else{
+        if (rows >= lines) {
+            rows = lines;
+        }
+        realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
+    }
+    return CGSizeMake(textSize.width, realHeight);
 }
 
 @end

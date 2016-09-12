@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "QSShowTextCell.h"
+#import "UIColor+BgColor.h"
 
 static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
 
@@ -28,11 +29,10 @@ static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
     
     self.dataSource = [NSArray arrayWithObjects:
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟。",
-                       @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟。",
-                       @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟。",nil];
+                       @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟,7)我是一只小小小鸟,8)我是一只小小小鸟,9)我是一只小小小鸟。",
+                       @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟,7)我是一只小小小鸟,8)我是一只小小小鸟,9)我是一只小小小鸟。10)我是一只小小小鸟,11)我是一只小小小鸟,12)我是一只小小小鸟。",nil];
     
-    
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor colorWithRGB:0xf3f3f7];
     [self.view addSubview:self.tableView];
 }
 
