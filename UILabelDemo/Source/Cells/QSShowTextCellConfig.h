@@ -12,9 +12,8 @@
 #define SCREEN_HEIGHT CGRectGetHeight([[UIScreen mainScreen] bounds])
 #define SCREEN_WIDTH  CGRectGetWidth([[UIScreen mainScreen] bounds])
 
-#define QSTextDefaultLines 0
+#define QSTextDefaultLines 2
 #define QSTextLineSpacing 8
 #define QSTextFontSize 15
-#define QSTextConstrainedSize CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)
 
 #endif /* QSShowTextCellConfig_h */

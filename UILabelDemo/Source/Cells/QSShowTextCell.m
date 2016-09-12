@@ -59,7 +59,7 @@
 
     _titleLabel.text = @"DESCRIPTION";
     
-    CGSize textSize = [_contentLabel setText:text lines:QSTextDefaultLines andLineSpacing:QSTextLineSpacing constrainedToSize:QSTextConstrainedSize];
+    CGSize textSize = [_contentLabel setText:text lines:QSTextDefaultLines andLineSpacing:QSTextLineSpacing constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)];
     _contentLabel.frame = CGRectMake(15, CGRectGetMaxY(self.titleLabel.frame) + 10, textSize.width, textSize.height);
     [_contentLabel sizeToFit];
     
@@ -73,7 +73,7 @@
                            lines:QSTextDefaultLines
                             font:[UIFont systemFontOfSize:QSTextFontSize]
                   andLineSpacing:QSTextLineSpacing
-               constrainedToSize:QSTextConstrainedSize].height + 41;
+               constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)].height + 41;
 
 }
 

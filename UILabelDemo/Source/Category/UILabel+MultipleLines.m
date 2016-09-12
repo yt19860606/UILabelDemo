@@ -18,6 +18,10 @@
     }
     
     CGSize textSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
+
+    if ([self p_isSingleLine:textSize.height font:self.font]) {
+        lineSpacing = 0.0f;
+    }
     
     //设置文字的属性
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:text];
@@ -44,8 +48,7 @@
     CGFloat realHeight = oneRowHeight;
     // 0 不限制行数
     if (lines == 0) {
-        CGFloat rows = textSize.height / oneRowHeight;
-        if (rows > 1) {
+        if (rows >= 1) {
             realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
         }
     }else{
@@ -55,6 +58,17 @@
         realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
     }
     return CGSizeMake(textSize.width, realHeight);
+}
+
+//单行的判断
+- (BOOL)p_isSingleLine:(CGFloat)height font:(UIFont*)font{
+
+    BOOL isSingle = NO;
+    CGFloat oneRowHeight = [@"占位" sizeWithAttributes:@{NSFontAttributeName:font}].height;
+    if (fabs(height - oneRowHeight)  < 0.001f) {
+        isSingle = YES;
+    }
+    return isSingle;
 }
 
 @end
