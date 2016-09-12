@@ -37,7 +37,7 @@
         return CGSizeZero;
     }
     
-    CGFloat oneRowHeight = [text sizeWithAttributes:@{NSFontAttributeName:font}].height;
+    CGFloat oneRowHeight = [@"占位" sizeWithAttributes:@{NSFontAttributeName:font}].height;
     CGSize textSize = [text boundingRectWithSize:cSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
     
     CGFloat rows = textSize.height / oneRowHeight;
