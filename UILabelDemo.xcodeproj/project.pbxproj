@@ -15,6 +15,8 @@
 		88563A771D864F6C00B4EA30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88563A751D864F6C00B4EA30 /* LaunchScreen.storyboard */; };
 		88563A821D864F6C00B4EA30 /* UILabelDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A811D864F6C00B4EA30 /* UILabelDemoTests.m */; };
 		88563A8D1D864F6C00B4EA30 /* UILabelDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A8C1D864F6C00B4EA30 /* UILabelDemoUITests.m */; };
+		88563A9E1D86502100B4EA30 /* UILabel+MultipleLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */; };
+		88563AA21D86533200B4EA30 /* QSShowTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563AA11D86533200B4EA30 /* QSShowTextCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		88563A881D864F6C00B4EA30 /* UILabelDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UILabelDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88563A8C1D864F6C00B4EA30 /* UILabelDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UILabelDemoUITests.m; sourceTree = "<group>"; };
 		88563A8E1D864F6C00B4EA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88563A9C1D86502100B4EA30 /* UILabel+MultipleLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MultipleLines.h"; sourceTree = "<group>"; };
+		88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MultipleLines.m"; sourceTree = "<group>"; };
+		88563AA01D86533200B4EA30 /* QSShowTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSShowTextCell.h; sourceTree = "<group>"; };
+		88563AA11D86533200B4EA30 /* QSShowTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSShowTextCell.m; sourceTree = "<group>"; };
+		88563AA71D86546B00B4EA30 /* QSShowTextCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSShowTextCellConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +108,7 @@
 		88563A661D864F6C00B4EA30 /* UILabelDemo */ = {
 			isa = PBXGroup;
 			children = (
+				88563A9A1D864FCC00B4EA30 /* Source */,
 				88563A6A1D864F6C00B4EA30 /* AppDelegate.h */,
 				88563A6B1D864F6C00B4EA30 /* AppDelegate.m */,
 				88563A6D1D864F6C00B4EA30 /* ViewController.h */,
@@ -138,6 +146,34 @@
 				88563A8E1D864F6C00B4EA30 /* Info.plist */,
 			);
 			path = UILabelDemoUITests;
+			sourceTree = "<group>";
+		};
+		88563A9A1D864FCC00B4EA30 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				88563A9F1D8652F700B4EA30 /* Cells */,
+				88563A9B1D864FCC00B4EA30 /* Category */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		88563A9B1D864FCC00B4EA30 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				88563A9C1D86502100B4EA30 /* UILabel+MultipleLines.h */,
+				88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		88563A9F1D8652F700B4EA30 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				88563AA01D86533200B4EA30 /* QSShowTextCell.h */,
+				88563AA11D86533200B4EA30 /* QSShowTextCell.m */,
+				88563AA71D86546B00B4EA30 /* QSShowTextCellConfig.h */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +308,8 @@
 			files = (
 				88563A6F1D864F6C00B4EA30 /* ViewController.m in Sources */,
 				88563A6C1D864F6C00B4EA30 /* AppDelegate.m in Sources */,
+				88563A9E1D86502100B4EA30 /* UILabel+MultipleLines.m in Sources */,
+				88563AA21D86533200B4EA30 /* QSShowTextCell.m in Sources */,
 				88563A691D864F6C00B4EA30 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
