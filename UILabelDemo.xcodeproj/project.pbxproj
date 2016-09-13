@@ -18,6 +18,7 @@
 		88563A9E1D86502100B4EA30 /* UILabel+MultipleLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */; };
 		88563AA21D86533200B4EA30 /* QSShowTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563AA11D86533200B4EA30 /* QSShowTextCell.m */; };
 		88563AAA1D86915200B4EA30 /* UIColor+BgColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 88563AA91D86915200B4EA30 /* UIColor+BgColor.m */; };
+		A9246F424757DA1F852A7279 /* libPods-UILabelDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C8CB1BB44F194B47B8A305 /* libPods-UILabelDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,9 @@
 		88563AA71D86546B00B4EA30 /* QSShowTextCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSShowTextCellConfig.h; sourceTree = "<group>"; };
 		88563AA81D86915200B4EA30 /* UIColor+BgColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BgColor.h"; sourceTree = "<group>"; };
 		88563AA91D86915200B4EA30 /* UIColor+BgColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BgColor.m"; sourceTree = "<group>"; };
+		B6C8CB1BB44F194B47B8A305 /* libPods-UILabelDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UILabelDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C56214DFC896E457BF933A48 /* Pods-UILabelDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UILabelDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UILabelDemo/Pods-UILabelDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		EE9462CACBA3C65F319BE3EE /* Pods-UILabelDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UILabelDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-UILabelDemo/Pods-UILabelDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9246F424757DA1F852A7279 /* libPods-UILabelDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D8287923FC508C28A3232C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6C8CB1BB44F194B47B8A305 /* libPods-UILabelDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E338BAE072C55AC3F5D2D61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C56214DFC896E457BF933A48 /* Pods-UILabelDemo.debug.xcconfig */,
+				EE9462CACBA3C65F319BE3EE /* Pods-UILabelDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		88563A5B1D864F6C00B4EA30 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +117,8 @@
 				88563A801D864F6C00B4EA30 /* UILabelDemoTests */,
 				88563A8B1D864F6C00B4EA30 /* UILabelDemoUITests */,
 				88563A651D864F6C00B4EA30 /* Products */,
+				2E338BAE072C55AC3F5D2D61 /* Pods */,
+				1D8287923FC508C28A3232C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,9 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88563A911D864F6C00B4EA30 /* Build configuration list for PBXNativeTarget "UILabelDemo" */;
 			buildPhases = (
+				350FE665BFFE854C1A3B4BFA /* 📦 Check Pods Manifest.lock */,
 				88563A601D864F6C00B4EA30 /* Sources */,
 				88563A611D864F6C00B4EA30 /* Frameworks */,
 				88563A621D864F6C00B4EA30 /* Resources */,
+				6FDB57CB4B033006F379F71D /* 📦 Embed Pods Frameworks */,
+				625899A8B1BD7B703440845D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,6 +333,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		350FE665BFFE854C1A3B4BFA /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		625899A8B1BD7B703440845D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UILabelDemo/Pods-UILabelDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FDB57CB4B033006F379F71D /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UILabelDemo/Pods-UILabelDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88563A601D864F6C00B4EA30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -408,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -447,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,6 +532,7 @@
 		};
 		88563A921D864F6C00B4EA30 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C56214DFC896E457BF933A48 /* Pods-UILabelDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UILabelDemo/Info.plist;
@@ -468,6 +544,7 @@
 		};
 		88563A931D864F6C00B4EA30 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE9462CACBA3C65F319BE3EE /* Pods-UILabelDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UILabelDemo/Info.plist;
@@ -542,6 +619,7 @@
 				88563A931D864F6C00B4EA30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88563A941D864F6C00B4EA30 /* Build configuration list for PBXNativeTarget "UILabelDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +628,7 @@
 				88563A961D864F6C00B4EA30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88563A971D864F6C00B4EA30 /* Build configuration list for PBXNativeTarget "UILabelDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +637,7 @@
 				88563A991D864F6C00B4EA30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

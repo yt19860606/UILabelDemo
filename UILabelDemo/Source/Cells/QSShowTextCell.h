@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface QSShowTextCell : UITableViewCell
+@interface QSShowTextCell : SWTableViewCell
 
 - (void)layoutSubviewsWithText:(NSString *)text;
 

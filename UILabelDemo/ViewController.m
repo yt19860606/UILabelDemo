@@ -12,10 +12,10 @@
 
 static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,SWTableViewCellDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
-@property (nonatomic,copy)NSArray *dataSource;
+@property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
 
@@ -27,7 +27,7 @@ static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
 
     self.navigationItem.title = @"UILableDemo";
     
-    self.dataSource = [NSArray arrayWithObjects:
+    self.dataSource = [[NSMutableArray alloc]initWithObjects:
                        @"fuidsahfudhgfhdjsghjjehwighueirhgiuoerqhgoierqhgoihrewuighwruihgejrkhgjlkerhguihrewioughrewuioghreuih",
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟",
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟。",
@@ -64,12 +64,13 @@ static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return 1;
+    return [self.dataSource count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
-    return [self.dataSource count];
+    return 1;
+    //;
 }
 
 
@@ -92,15 +93,105 @@ static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
     if (!cell) {
         
         cell = [[QSShowTextCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kShowTextCellReuseIdentifier];
+//        cell.leftUtilityButtons = [self leftButtons];
+        cell.rightUtilityButtons = [self rightButtons];
+        cell.delegate = self;
     }
     [cell layoutSubviewsWithText:[self p_textAtIndexPath:indexPath]];
     return cell;
 
 }
 
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"More"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    
+    return rightUtilityButtons;
+}
+
+- (NSArray *)leftButtons
+{
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.07 green:0.75f blue:0.16f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"check.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:1.0f blue:0.35f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"clock.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"cross.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.55f green:0.27f blue:0.07f alpha:1.0]
+                                                icon:[UIImage imageNamed:@"list.png"]];
+    
+    return leftUtilityButtons;
+}
+
+
+#pragma mark - SWTableViewDelegate
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+            NSLog(@"check button was pressed");
+            break;
+        case 1:
+            NSLog(@"clock button was pressed");
+            break;
+        case 2:
+            NSLog(@"cross button was pressed");
+            break;
+        case 3:
+            NSLog(@"list button was pressed");
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:{
+            NSLog(@"More button was pressed");
+            UIAlertView *alertTest = [[UIAlertView alloc] initWithTitle:@"Hello" message:@"More more more" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles: nil];
+            [alertTest show];
+            
+            [cell hideUtilityButtonsAnimated:YES];
+        }
+            break;
+        case 1:
+        {
+            // Delete button was pressed
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            [self p_removeTextAtIndexPath:cellIndexPath];
+            [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 - (NSString *)p_textAtIndexPath:(NSIndexPath *)indexPath{
 
-    return [self.dataSource objectAtIndex:indexPath.section];
+    return [self.dataSource objectAtIndex:indexPath.row];
+}
+
+- (void)p_removeTextAtIndexPath:(NSIndexPath *)indexPath{
+    
+
+    NSLog(@"row = %ld,section = %ld",indexPath.row,indexPath.section);
+    [self.dataSource removeObjectAtIndex:indexPath.row];
 }
 
 
