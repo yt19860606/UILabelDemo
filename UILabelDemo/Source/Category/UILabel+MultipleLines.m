@@ -40,8 +40,9 @@
     if (!text && text.length !=0) {
         return CGSizeZero;
     }
+    NSString *firstWord = [text substringToIndex:1];
     
-    CGFloat oneRowHeight = [@"占位" sizeWithAttributes:@{NSFontAttributeName:font}].height;
+    CGFloat oneRowHeight = [firstWord sizeWithAttributes:@{NSFontAttributeName:font}].height;
     CGSize textSize = [text boundingRectWithSize:cSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
     
     CGFloat rows = textSize.height / oneRowHeight;
