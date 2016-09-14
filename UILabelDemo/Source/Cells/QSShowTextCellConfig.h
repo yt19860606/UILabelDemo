@@ -13,7 +13,7 @@
 #define SCREEN_WIDTH  CGRectGetWidth([[UIScreen mainScreen] bounds])
 
 #define QSTextDefaultLines 2
-#define QSTextLineSpacing 8
+#define QSTextLineSpacing 15
 #define QSTextFontSize 15
 
 #endif /* QSShowTextCellConfig_h */

@@ -70,12 +70,15 @@
 
 + (CGFloat)cellHeightWithText:(NSString *)text{
 
-    CGSize textSize = [UILabel sizeWithText:text
+    CGSize textSize = [UILabel realSizeWithText:text
                                             lines:QSTextDefaultLines
                                              font:[UIFont systemFontOfSize:QSTextFontSize]
                                    andLineSpacing:QSTextLineSpacing
                                 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)];
 //    NSLog(@"<cellHeight>%@ : %@",text,NSStringFromCGSize(textSize));
+
+//    UILabel 
+    
     return textSize.height + 41;
 
 }

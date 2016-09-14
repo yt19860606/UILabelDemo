@@ -8,6 +8,8 @@
 
 #import "UILabel+MultipleLines.h"
 #import <objc/runtime.h>
+#import "QSShowTextCellConfig.h"
+
 
 @implementation UILabel (MultipleLines)
 
@@ -39,7 +41,7 @@
     }
     
     self.textSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
-
+    
     if ([self p_isSingleLine:self.textSize.height font:self.font]) {
         lineSpacing = 0.0f;
         [self setSingleLine:YES];
@@ -82,8 +84,20 @@
         }
         realHeight = (rows * oneRowHeight) + (rows - 1) * lineSpacing;
     }
+    
     return CGSizeMake(textSize.width, realHeight);
 }
+
++ (CGSize)realSizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
+
+    UILabel *label = [[UILabel alloc]init];
+    label.font = [UIFont systemFontOfSize:QSTextFontSize];
+    CGSize textSize = [label setText:text lines:lines andLineSpacing:lineSpacing constrainedToSize:cSize];
+    label.bounds = CGRectMake(0, 0, textSize.width, textSize.height);
+    [label adjustLabelContent];
+    return label.frame.size;
+}
+
 
 //单行的判断
 - (BOOL)p_isSingleLine:(CGFloat)height font:(UIFont*)font{
@@ -103,6 +117,7 @@
     }else{
         [self sizeToFit]; //调整label的宽和高，使它根据字符串的大小做合适的改变,避免多行显示时文本不从顶部往下排版
     }
+    NSLog(@"testSize = %@, size = %@",NSStringFromCGSize(self.textSize),NSStringFromCGSize(self.frame.size));
 }
 
 @end
