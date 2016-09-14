@@ -99,9 +99,9 @@
 - (void)adjustLabelContent{
 
     if (self.isSingleLine) {
-         [self sizeThatFits:self.textSize];
+        [self sizeThatFits:self.textSize];//固定原始label的大小，避免文本太多，单行显示时超出label size
     }else{
-        [self sizeToFit];
+        [self sizeToFit]; //调整label的宽和高，使它根据字符串的大小做合适的改变,避免多行显示时文本不从顶部往下排版
     }
 }
 

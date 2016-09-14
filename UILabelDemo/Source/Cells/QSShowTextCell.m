@@ -75,7 +75,7 @@
                                              font:[UIFont systemFontOfSize:QSTextFontSize]
                                    andLineSpacing:QSTextLineSpacing
                                 constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)];
-    NSLog(@"<cellHeight>%@ : %@",text,NSStringFromCGSize(textSize));
+//    NSLog(@"<cellHeight>%@ : %@",text,NSStringFromCGSize(textSize));
     return textSize.height + 41;
 
 }
