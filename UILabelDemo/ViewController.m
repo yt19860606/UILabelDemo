@@ -28,7 +28,7 @@ static NSString * const kShowTextCellReuseIdentifier = @"QSShowTextCell";
     self.navigationItem.title = @"UILableDemo";
     
     self.dataSource = [[NSMutableArray alloc]initWithObjects:
-                       @"fuidsahfudhgfhdjsghjjehwighueirhgiuoerqhgoierqhgoihrewuighwruihgejrkhgjlkerhguihrewioughrewuioghreuih",
+                       @"fuidsahfudhgfhdjsghjje1)我是一只小小小鸟,2)我是一只小小小鸟huihgejrkhgjlkerhguihrewioughrewuioghreuih",
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟",
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟。",
                        @"1)我是一只小小小鸟,2)我是一只小小小鸟,3)我是一只小小小鸟,4)我是一只小小小鸟,5)我是一只小小小鸟,6)我是一只小小小鸟,7)我是一只小小小鸟,8)我是一只小小小鸟,9)我是一只小小小鸟。",

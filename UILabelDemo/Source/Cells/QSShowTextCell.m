@@ -60,11 +60,9 @@
     _titleLabel.text = @"DESCRIPTION";
     
     CGSize textSize = [_contentLabel setText:text lines:QSTextDefaultLines andLineSpacing:QSTextLineSpacing constrainedToSize:CGSizeMake(SCREEN_WIDTH - 30,MAXFLOAT)];
-//    textSize
-    NSLog(@"SCREEN_WIDTH - 30 = %lf",SCREEN_WIDTH - 30);
-    NSLog(@"%@ = %@",text, NSStringFromCGSize(textSize));
+//    NSLog(@"%@ = %@",text, NSStringFromCGSize(textSize));
     _contentLabel.frame = CGRectMake(15, CGRectGetMaxY(self.titleLabel.frame) + 10, textSize.width, textSize.height);
-//    [_contentLabel sizeToFit];
+    [_contentLabel adjustLabelContent];
     
     _contentLabel.layer.borderColor = [UIColor redColor].CGColor;
     _contentLabel.layer.borderWidth = 1;

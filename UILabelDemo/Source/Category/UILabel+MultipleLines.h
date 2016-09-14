@@ -11,6 +11,14 @@
 @interface UILabel (MultipleLines)
 
 /**
+ *  文本是一行就能显示
+ */
+@property (nonatomic,assign,setter=setSingleLine:)BOOL isSingleLine;
+
+@property (nonatomic,assign)CGSize textSize;
+
+
+/**
  *  设置文本多行可控间距显示
  *
  *  @param text        文本
@@ -37,5 +45,7 @@
  *  @return 文本占用的size
  */
 + (CGSize)sizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize;
+
+- (void)adjustLabelContent;
 
 @end

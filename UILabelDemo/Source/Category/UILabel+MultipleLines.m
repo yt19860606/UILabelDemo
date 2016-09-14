@@ -7,8 +7,29 @@
 //
 
 #import "UILabel+MultipleLines.h"
+#import <objc/runtime.h>
 
 @implementation UILabel (MultipleLines)
+
+- (BOOL)isSingleLine{
+
+    return [objc_getAssociatedObject(self, @selector(isSingleLine)) boolValue];
+}
+
+- (void)setSingleLine:(BOOL)isSingleLine{
+
+    objc_setAssociatedObject(self, @selector(isSingleLine), [NSNumber numberWithBool:isSingleLine], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)setTextSize:(CGSize)textSize{
+
+    objc_setAssociatedObject(self, @selector(textSize), [NSValue valueWithCGSize:textSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (CGSize)textSize{
+
+    return [objc_getAssociatedObject(self, @selector(textSize)) CGSizeValue];
+}
 
 - (CGSize)setText:(NSString *)text lines:(NSInteger)lines andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
     
@@ -17,10 +38,13 @@
         return CGSizeZero;
     }
     
-    CGSize textSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
+    self.textSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
 
-    if ([self p_isSingleLine:textSize.height font:self.font]) {
+    if ([self p_isSingleLine:self.textSize.height font:self.font]) {
         lineSpacing = 0.0f;
+        [self setSingleLine:YES];
+    }else{
+        [self setSingleLine:NO];
     }
     
     //设置文字的属性
@@ -32,7 +56,7 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text length])];
     
     [self setAttributedText:attributedString];
-    return CGSizeMake(textSize.width, textSize.height);
+    return CGSizeMake(self.textSize.width, self.textSize.height);
 }
 
 + (CGSize)sizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
@@ -70,6 +94,15 @@
         isSingle = YES;
     }
     return isSingle;
+}
+
+- (void)adjustLabelContent{
+
+    if (self.isSingleLine) {
+         [self sizeThatFits:self.textSize];
+    }else{
+        [self sizeToFit];
+    }
 }
 
 @end
