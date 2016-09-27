@@ -8,28 +8,26 @@
 
 #import "UILabel+MultipleLines.h"
 #import <objc/runtime.h>
-#import "QSShowTextCellConfig.h"
-
 
 @implementation UILabel (MultipleLines)
 
 - (BOOL)isSingleLine{
-
+    
     return [objc_getAssociatedObject(self, @selector(isSingleLine)) boolValue];
 }
 
 - (void)setSingleLine:(BOOL)isSingleLine{
-
+    
     objc_setAssociatedObject(self, @selector(isSingleLine), [NSNumber numberWithBool:isSingleLine], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)setLbTextSize:(CGSize)lbTextSize{
-
+    
     objc_setAssociatedObject(self, @selector(lbTextSize), [NSValue valueWithCGSize:lbTextSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (CGSize)lbTextSize{
-
+    
     return [objc_getAssociatedObject(self, @selector(lbTextSize)) CGSizeValue];
 }
 
@@ -40,7 +38,7 @@
         return CGSizeZero;
     }
     
-    self.lbTextSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
+    self.lbTextSize = [self p_calculateSizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
     
     if ([self p_isSingleLine:self.lbTextSize.height font:self.font]) {
         lineSpacing = 0.0f;
@@ -58,10 +56,34 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text length])];
     
     [self setAttributedText:attributedString];
-    return CGSizeMake(self.lbTextSize.width, self.lbTextSize.height);
+    self.bounds = CGRectMake(0, 0, self.lbTextSize.width, self.lbTextSize.height);
+    [self p_adjustLabelContent];
+    NSLog(@"self.frame.size = %@",NSStringFromCGSize(self.frame.size));
+    return self.frame.size;
 }
 
 + (CGSize)sizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
+    
+    UILabel *label = [[UILabel alloc]init];
+    label.font = font;
+    [label setText:text lines:lines andLineSpacing:lineSpacing constrainedToSize:cSize];
+    return label.frame.size;
+}
+
+#pragma mark - private methods
+//单行的判断
+- (BOOL)p_isSingleLine:(CGFloat)height font:(UIFont*)font{
+    
+    BOOL isSingle = NO;
+    CGFloat oneRowHeight = [@"占位" sizeWithAttributes:@{NSFontAttributeName:font}].height;
+    if (fabs(height - oneRowHeight)  < 0.001f) {
+        isSingle = YES;
+    }
+    return isSingle;
+}
+
+//真正计算文本占用的size
+- (CGSize)p_calculateSizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
     
     if (!text && text.length !=0) {
         return CGSizeZero;
@@ -88,30 +110,8 @@
     return CGSizeMake(textSize.width, realHeight);
 }
 
-+ (CGSize)realSizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
-
-    UILabel *label = [[UILabel alloc]init];
-    label.font = [UIFont systemFontOfSize:QSTextFontSize];
-    CGSize textSize = [label setText:text lines:lines andLineSpacing:lineSpacing constrainedToSize:cSize];
-    label.bounds = CGRectMake(0, 0, textSize.width, textSize.height);
-    [label adjustLabelContent];
-    return label.frame.size;
-}
-
-
-//单行的判断
-- (BOOL)p_isSingleLine:(CGFloat)height font:(UIFont*)font{
-
-    BOOL isSingle = NO;
-    CGFloat oneRowHeight = [@"占位" sizeWithAttributes:@{NSFontAttributeName:font}].height;
-    if (fabs(height - oneRowHeight)  < 0.001f) {
-        isSingle = YES;
-    }
-    return isSingle;
-}
-
-- (void)adjustLabelContent{
-
+- (void)p_adjustLabelContent{
+    
     if (self.isSingleLine) {
         [self sizeThatFits:self.lbTextSize];//固定原始label的大小，避免文本太多，单行显示时超出label size
     }else{

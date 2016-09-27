@@ -15,14 +15,14 @@
  */
 @property (nonatomic,assign,setter=setSingleLine:)BOOL isSingleLine;
 
-@property (nonatomic,assign)CGSize lbTextSize;
+@property (nonatomic,assign)CGSize lbTextSize;  //属性不可以是textSize
 
 
 /**
  *  设置文本多行可控间距显示
  *
  *  @param text        文本
- *  @param lines       行数，lines = 0不限制行数
+ *  @param lines       行数，lines = 0不限制行数,文本显示不足lines，正常显示。超过lines,结尾部分的内容以……方式省略
  *  @param lineSpacing 行间距
  *  @param cSize       文本显示的最大区域
  *
@@ -46,8 +46,5 @@
  */
 + (CGSize)sizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize;
 
-+ (CGSize)realSizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize;
-
-- (void)adjustLabelContent;
 
 @end
