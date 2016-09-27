@@ -15,7 +15,7 @@
  */
 @property (nonatomic,assign,setter=setSingleLine:)BOOL isSingleLine;
 
-@property (nonatomic,assign)CGSize textSize;
+@property (nonatomic,assign)CGSize lbTextSize;
 
 
 /**

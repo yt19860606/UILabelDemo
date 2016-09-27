@@ -23,14 +23,14 @@
     objc_setAssociatedObject(self, @selector(isSingleLine), [NSNumber numberWithBool:isSingleLine], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)setTextSize:(CGSize)textSize{
+- (void)setLbTextSize:(CGSize)lbTextSize{
 
-    objc_setAssociatedObject(self, @selector(textSize), [NSValue valueWithCGSize:textSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(lbTextSize), [NSValue valueWithCGSize:lbTextSize], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGSize)textSize{
+- (CGSize)lbTextSize{
 
-    return [objc_getAssociatedObject(self, @selector(textSize)) CGSizeValue];
+    return [objc_getAssociatedObject(self, @selector(lbTextSize)) CGSizeValue];
 }
 
 - (CGSize)setText:(NSString *)text lines:(NSInteger)lines andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
@@ -40,9 +40,9 @@
         return CGSizeZero;
     }
     
-    self.textSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
+    self.lbTextSize = [self.class sizeWithText:text lines:lines font:self.font andLineSpacing:lines constrainedToSize:cSize];
     
-    if ([self p_isSingleLine:self.textSize.height font:self.font]) {
+    if ([self p_isSingleLine:self.lbTextSize.height font:self.font]) {
         lineSpacing = 0.0f;
         [self setSingleLine:YES];
     }else{
@@ -58,7 +58,7 @@
     [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [text length])];
     
     [self setAttributedText:attributedString];
-    return CGSizeMake(self.textSize.width, self.textSize.height);
+    return CGSizeMake(self.lbTextSize.width, self.lbTextSize.height);
 }
 
 + (CGSize)sizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
@@ -113,11 +113,11 @@
 - (void)adjustLabelContent{
 
     if (self.isSingleLine) {
-        [self sizeThatFits:self.textSize];//固定原始label的大小，避免文本太多，单行显示时超出label size
+        [self sizeThatFits:self.lbTextSize];//固定原始label的大小，避免文本太多，单行显示时超出label size
     }else{
         [self sizeToFit]; //调整label的宽和高，使它根据字符串的大小做合适的改变,避免多行显示时文本不从顶部往下排版
     }
-    NSLog(@"testSize = %@, size = %@",NSStringFromCGSize(self.textSize),NSStringFromCGSize(self.frame.size));
+    NSLog(@"testSize = %@, size = %@",NSStringFromCGSize(self.lbTextSize),NSStringFromCGSize(self.frame.size));
 }
 
 @end

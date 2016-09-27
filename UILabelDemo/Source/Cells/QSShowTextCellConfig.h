@@ -12,7 +12,7 @@
 #define SCREEN_HEIGHT CGRectGetHeight([[UIScreen mainScreen] bounds])
 #define SCREEN_WIDTH  CGRectGetWidth([[UIScreen mainScreen] bounds])
 
-#define QSTextDefaultLines 2
+#define QSTextDefaultLines 0
 #define QSTextLineSpacing 15
 #define QSTextFontSize 15
 
