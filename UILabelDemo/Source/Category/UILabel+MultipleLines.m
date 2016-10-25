@@ -34,7 +34,7 @@
 - (CGSize)setText:(NSString *)text lines:(NSInteger)lines andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
     
     self.numberOfLines = lines;  //限定行数
-    if (!text && text.length !=0) {
+    if (!text || text.length ==0) {
         return CGSizeZero;
     }
     
@@ -85,7 +85,7 @@
 //真正计算文本占用的size
 - (CGSize)p_calculateSizeWithText:(NSString *)text lines:(NSInteger)lines font:(UIFont*)font andLineSpacing:(CGFloat)lineSpacing constrainedToSize:(CGSize)cSize{
     
-    if (!text && text.length !=0) {
+    if (!text || text.length ==0) {
         return CGSizeZero;
     }
     NSString *firstWord = [text substringToIndex:1];
