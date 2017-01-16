@@ -10,11 +10,6 @@
 
 @interface UILabel (MultipleLines)
 
-/**
- *  文本是一行就能显示
- */
-@property (nonatomic,assign,setter=setSingleLine:)BOOL isSingleLine;
-
 @property (nonatomic,assign)CGSize lbTextSize;  //属性不可以是textSize
 
 

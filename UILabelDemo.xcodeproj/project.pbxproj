@@ -41,7 +41,7 @@
 /* Begin PBXFileReference section */
 		88563A641D864F6C00B4EA30 /* UILabelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UILabelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88563A681D864F6C00B4EA30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		88563A6A1D864F6C00B4EA30 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88563A6A1D864F6C00B4EA30 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		88563A6B1D864F6C00B4EA30 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		88563A6D1D864F6C00B4EA30 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		88563A6E1D864F6C00B4EA30 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -136,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				88563A9A1D864FCC00B4EA30 /* Source */,
-				88563A6A1D864F6C00B4EA30 /* AppDelegate.h */,
 				88563A6B1D864F6C00B4EA30 /* AppDelegate.m */,
 				88563A6D1D864F6C00B4EA30 /* ViewController.h */,
 				88563A6E1D864F6C00B4EA30 /* ViewController.m */,
@@ -189,6 +188,7 @@
 			children = (
 				88563A9C1D86502100B4EA30 /* UILabel+MultipleLines.h */,
 				88563A9D1D86502100B4EA30 /* UILabel+MultipleLines.m */,
+				88563A6A1D864F6C00B4EA30 /* AppDelegate.h */,
 				88563AA81D86915200B4EA30 /* UIColor+BgColor.h */,
 				88563AA91D86915200B4EA30 /* UIColor+BgColor.m */,
 			);
